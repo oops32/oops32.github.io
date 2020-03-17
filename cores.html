@@ -19,6 +19,7 @@ function loadDoc() {
         var xmlDoc=parser.parseFromString(this.responseText,"text/xml");
         var clientId = xmlDoc.getElementById('client-id');
         var clientSecret = xmlDoc.getElementById('client-secret');
+        console.log(clientId);
         document.getElementById("demo1").innerHTML = clientId;
         document.getElementById("demo2").innerHTML = clientSecret;
     }
