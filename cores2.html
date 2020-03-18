@@ -53,6 +53,7 @@ function get_csrf_token(){
   
 function deactivate(){
   var xhttp = new XMLHttpRequest();
+    xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
     xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
           document.getElementById("demo5").innerHTML = xhttp.responseText;
