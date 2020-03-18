@@ -17,8 +17,8 @@ function loadDoc() {
     if (this.readyState == 4 && this.status == 200) {
         var parser=new DOMParser();
         var xmlDoc=parser.parseFromString(this.responseText,"text/xml");
-        var clientId = xmlDoc.getElementById('client-id');
-        var clientSecret = xmlDoc.getElementById('client-secret');
+        var clientId = xmlDoc.querySelector('#client-id');
+        var clientSecret = xmlDoc.querySelector('#client-secret');
         console.log(clientId);
         document.getElementById("demo1").innerHTML = clientId;
         document.getElementById("demo2").innerHTML = clientSecret;
