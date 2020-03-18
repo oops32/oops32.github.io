@@ -19,8 +19,8 @@ function loadDoc() {
         var clientId = xmlDoc.querySelector('#client-id');
         var clientSecret = xmlDoc.querySelector('#client-secret');
         console.log(clientId);
-        document.getElementById("demo1").innerHTML = clientId;
-        document.getElementById("demo2").innerHTML = clientSecret;
+        document.getElementById("demo1").innerHTML = clientId.innerText;
+        document.getElementById("demo2").innerHTML = clientSecret.innerText;;
     }
   };
   xhttp.open("GET", "https://www.hackerearth.com/users/profile-settings/", true);
