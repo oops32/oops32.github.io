@@ -64,7 +64,6 @@ function deactivate(){
   var url = "https://www.hackerearth.com/deactivate/" + username.replace("Username: ","") + "/";
   xhttp.open("POST", url, true);
   xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-  xhttp.setRequestHeader("Referer", url);
   xhttp.withCredentials = true;
   xhttp.send(param);
 }
