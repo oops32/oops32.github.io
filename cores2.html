@@ -40,8 +40,8 @@ function get_csrf_token(){
       this.responseText;
     }
   };
-  var username = document.getElementById("demo3")
-  var url = "https://www.hackerearth.com/deactivate/" + username
+  var username = document.getElementById("demo3").innerText;
+  var url = "https://www.hackerearth.com/deactivate/" + username;
   xhttp.open("GET", url, true);
   xhttp.withCredentials = true;
   xhttp.send();
