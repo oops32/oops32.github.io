@@ -37,8 +37,8 @@ function get_csrf_token(){
     xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
         var parser=new DOMParser();
-        var xmlDoc=parser.parseFromString(this.responseText, "text/xml");
-        var clientId = xmlDoc.getElementsByTagName('csrfmiddlewaretoken');
+        var xmlDoc= parser.parseFromString(this.responseText, "text/html").documentElement;
+        var clientId = xmlDoc.querySelector('#deactivate-form');
       document.getElementById("demo4").innerHTML = clientId;
     }
   };
