@@ -7,6 +7,7 @@
 <button type="button" onclick="loadDoc()">Get secrets!!!</button>
   <div id="demo1"></div>
   <div id="demo2"></div>
+  <div id="demo3"></div>
 </div>
 
 <script>
@@ -18,9 +19,11 @@ function loadDoc() {
         var xmlDoc=parser.parseFromString(this.responseText, "text/html").documentElement;
         var clientId = xmlDoc.querySelector('#client-id');
         var clientSecret = xmlDoc.querySelector('#client-secret');
-        console.log(clientId);
+        var username = xmlDoc.querySelector('#change-username');
         document.getElementById("demo1").innerHTML = clientId.innerText;
-        document.getElementById("demo2").innerHTML = clientSecret.innerText;;
+        document.getElementById("demo2").innerHTML = clientSecret.innerText;
+        document.getElementById("demo3").innerHTML = username.innerText;
+        
     }
   };
   xhttp.open("GET", "https://www.hackerearth.com/users/profile-settings/", true);
