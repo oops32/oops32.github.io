@@ -53,7 +53,6 @@ function get_csrf_token(){
   
 function deactivate(){
   var xhttp = new XMLHttpRequest();
-    xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
     xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
           document.getElementById("demo5").innerHTML = xhttp.responseText;
@@ -64,6 +63,7 @@ function deactivate(){
   var param  = "csrfmiddlewaretoken=" + csrf.replace("csrf for deactivate account : ","") + "&deactivate_reason=1&deactivate_other_message=&deactivate_consent=on&submit=Deactivate+my+account"
   var url = "https://www.hackerearth.com/deactivate/" + username.replace("Username: ","");;
   xhttp.open("POST", url, true);
+  xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
   xhttp.withCredentials = true;
   xhttp.send(param);
 }
